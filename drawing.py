@@ -1,13 +1,8 @@
-
-test_contestants = ["* Reply", "John Doe", "Padmé Amidala", "* Reply", "Grogu", "Ahsoka Tano", 
-                    "Bo-Katan Kryze", "* Reply", "Mando", "Pelli Motto", "Padmé Amidala", 
-                    "Rey", "Princess Leia", "* Reply", "Jack Zimmer", "Zach S", "Mike", "* Reply", "Jay", "Jules", "* Reply",
-                    "Star-Killer", "Darth Maul"]
+import pandas as pd
 
 data = {
   "Entry": ["* Reply", "John Doe", "Padmé Amidala", "* Reply", "Grogu", "Ahsoka Tano", "Bo-Katan Kryze", "* Reply", "Mando", "Pelli Motto", "Padmé Amidala", "Rey", "Princess Leia"]
 }
-
 def parse_function(test):
     final_contestants = []
     index = 0
@@ -32,6 +27,7 @@ def parse_function(test):
         return final_contestants
     else:
         print('Please enter either a dictionary or list.')            
-    
-print(parse_function(data))
-print(parse_function(test_contestants))
+
+final_list = parse_function(data)
+df = pd.DataFrame(final_list)
+df.to_excel('final_ballots.xlsx', index=False)
